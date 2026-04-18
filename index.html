@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTRA – Tech Student Team</title>
+    <meta name="description"
+        content="ASTRA - A futuristic tech student team innovating the future through hackathons, robotics, AI/ML, and ideathons.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="arc-container">
+                <div class="arc arc-1"></div>
+                <div class="arc arc-2"></div>
+                <div class="arc arc-3"></div>
+            </div>
+            <h1 class="logo-text">ASTRA</h1>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <!-- Background Decoration -->
+    <div class="glow-bg"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-logo">ASTRA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#directives">Directives</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button id="sound-toggle" title="Toggle Sound">
+                    <i class="fas fa-volume-mute"></i>
+                </button>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="video-container">
+            <video id="hero-video" autoplay loop muted playsinline>
+                <source src="video/InShot_20260418_151122389.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                <img src="logo/logo.png" alt="ASTRA Logo" class="hero-logo">
+            </div>
+            <h2 class="tagline reveal-text-delay">BEYOND THE STARS</h2>
+            <a href="#directives" class="btn-glow">Discover More</a>
+        </div>
+    </section>
+
+    <!-- Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="song/WhatsApp Audio 2026-04-18 at 3.15.08 PM.mpeg" type="audio/mpeg">
+    </audio>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Initiating Sequence: <span class="text-gradient">About Us</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>ASTRA is more than just a team; it's a collective of visionaries, engineers, and creators pushing
+                        the boundaries of what's possible. Based in the heart of technological innovation, we strive to
+                        solve real-world problems through advanced engineering and creative thinking.</p>
+                    <p>Our mission is to foster a culture of innovation and excellence within the student community,
+                        preparing the next generation of tech leaders to take on global challenges.</p>
+                </div>
+
+                <div class="about-cards reveal-delay">
+                    <div class="stat-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Innovation</h3>
+                        <p>Driven by curiosity and the desire to build the future.</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Teamwork</h3>
+                        <p>Collaborative excellence in every line of code.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Directives Section -->
+    <section id="directives" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Core <span class="text-gradient">Directives</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="directives-grid">
+                <div class="directive-card neon-blue reveal" data-color="blue">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fas fa-code"></i></div>
+                        <h3>Hackathon</h3>
+                        <p>Building high-impact solutions in high-pressure environments. We code with purpose.</p>
+                    </div>
+                </div>
+
+                <div class="directive-card neon-red reveal-delay" data-color="red">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fas fa-robot"></i></div>
+                        <h3>Robotics</h3>
+                        <p>Designing and building the hardware that brings AI to the physical world.</p>
+                    </div>
+                </div>
+
+                <div class="directive-card neon-purple reveal-delay-2" data-color="purple">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fas fa-brain"></i></div>
+                        <h3>AI / ML</h3>
+                        <p>Leveraging the power of neural networks to solve complex analytical problems.</p>
+                    </div>
+                </div>
+
+                <div class="directive-card neon-blue reveal-delay-3" data-color="blue">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="icon-box"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Ideathon</h3>
+                        <p>Where creativity meets strategy. Conceptualizing the next big technological leap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title">Establish <span class="text-gradient">Contact</span></h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:teamastra03@gmail.com">teamastra03@gmail.com</a></p>
+                    </div>
+
+                    <div class="contact-card">
+                        <i class="fab fa-instagram"></i>
+                        <h3>Instagram</h3>
+                        <p><a href="https://instagram.com/astra._.in" target="_blank">astra._.in</a></p>
+                    </div>
+                </div>
+
+                <div class="tech-lines"></div>
+
+                <div class="footer-minimal reveal-delay">
+                    <p>&copy; 2024 ASTRA Team. All systems operational.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com/astra._.in" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
