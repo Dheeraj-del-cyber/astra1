@@ -1178,4 +1178,15 @@ body {
         white-space: normal; /* Allow wrapping on very small screens if needed */
         line-height: 1.2;
     }
+
+    .member-photo-wrapper {
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 15px;
+    }
+
+    .lead-card .member-photo-wrapper {
+        width: 130px !important;
+        height: 130px !important;
+    }
 }
