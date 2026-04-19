@@ -223,14 +223,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
     <script>
-        // Initialize Liquid WebGL Ripples on Background
         $(document).ready(function() {
             try {
+                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                
                 $('body').ripples({
-                    resolution: 512,
-                    dropRadius: 25,
-                    perturbance: 0.04,
+                    resolution: isMobile ? 256 : 512,
+                    dropRadius: isMobile ? 20 : 25,
+                    perturbance: isMobile ? 0.06 : 0.04,
+                    interactive: true
                 });
+
+                // Manual trigger for mobile touch to guarantee visibility
+                if (isMobile) {
+                    $('body').on('touchstart touchmove', function(e) {
+                        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                        $(this).ripples('drop', touch.pageX, touch.pageY, 15, 0.05);
+                    });
+                }
             } catch (e) {
                 console.error("Liquid Chrome effect not supported.", e);
             }

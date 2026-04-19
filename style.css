@@ -40,6 +40,12 @@ body {
     line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Fix for WebGL ripples on mobile */
+    }
+}
+
 ::selection {
     background: var(--primary-blue);
     color: #fff;
