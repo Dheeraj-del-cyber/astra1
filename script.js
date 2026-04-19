@@ -22,11 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         preloader.style.transition = 'opacity 0.8s ease';
         preloader.style.opacity = '0';
         setTimeout(() => {
-            preloader.style.display = 'none';
-            document.querySelector('.hero-content').classList.add('start-animation');
+            if (preloader) preloader.style.display = 'none';
+            const heroContent = document.querySelector('.hero-content');
+            if (heroContent) heroContent.classList.add('start-animation');
             
             // Explicitly start the hero video now
-            heroVideo.play();
+            if (heroVideo) heroVideo.play();
             
             // Unmute and handle audio sequence
             startAudioOnInteraction();
@@ -60,19 +61,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isInitComplete) return; // Prevent background music from overlapping the initialization video!
 
         if (!isPlaying) {
-            heroVideo.muted = false;
-            heroVideo.play().then(() => {
-                isPlaying = true;
-                soundIcon.classList.remove('fa-volume-mute');
-                soundIcon.classList.add('fa-volume-up');
-                soundToggle.style.borderColor = 'var(--primary-blue)';
-                console.log("Hero video sound initiated via user interaction.");
-                
-                // Remove listeners ONLY after successful playback
-                document.removeEventListener('click', startAudioOnInteraction);
-                document.removeEventListener('touchstart', startAudioOnInteraction);
-                document.removeEventListener('touchend', startAudioOnInteraction);
-            }).catch(err => console.log("Interaction playback failed, waiting for next touch:", err));
+            if (heroVideo) {
+                heroVideo.muted = false;
+                heroVideo.play().then(() => {
+                    isPlaying = true;
+                    if (soundIcon) {
+                        soundIcon.classList.remove('fa-volume-mute');
+                        soundIcon.classList.add('fa-volume-up');
+                    }
+                    if (soundToggle) soundToggle.style.borderColor = 'var(--primary-blue)';
+                    console.log("Hero video sound initiated via user interaction.");
+                    
+                    // Remove listeners ONLY after successful playback
+                    document.removeEventListener('click', startAudioOnInteraction);
+                    document.removeEventListener('touchstart', startAudioOnInteraction);
+                    document.removeEventListener('touchend', startAudioOnInteraction);
+                }).catch(err => console.log("Interaction playback failed, waiting for next touch:", err));
+            }
         }
     };
 
@@ -102,23 +107,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const soundIcon = soundToggle.querySelector('i');
     let isPlaying = false;
 
-    soundToggle.addEventListener('click', () => {
-        if (!isPlaying) {
-            heroVideo.muted = false;
-            heroVideo.play().then(() => {
-                isPlaying = true;
-                soundIcon.classList.remove('fa-volume-mute');
-                soundIcon.classList.add('fa-volume-up');
-                soundToggle.style.borderColor = 'var(--primary-blue)';
-            }).catch(err => console.log("Audio playback failed:", err));
-        } else {
-            heroVideo.muted = true;
-            isPlaying = false;
-            soundIcon.classList.remove('fa-volume-up');
-            soundIcon.classList.add('fa-volume-mute');
-            soundToggle.style.borderColor = 'var(--glass-border)';
-        }
-    });
+    if (soundToggle) {
+        soundToggle.addEventListener('click', () => {
+            if (!isPlaying) {
+                if (heroVideo) {
+                    heroVideo.muted = false;
+                    heroVideo.play().then(() => {
+                        isPlaying = true;
+                        if (soundIcon) {
+                            soundIcon.classList.remove('fa-volume-mute');
+                            soundIcon.classList.add('fa-volume-up');
+                        }
+                        soundToggle.style.borderColor = 'var(--primary-blue)';
+                    }).catch(err => console.log("Audio playback failed:", err));
+                }
+            } else {
+                if (heroVideo) heroVideo.muted = true;
+                isPlaying = false;
+                if (soundIcon) {
+                    soundIcon.classList.remove('fa-volume-up');
+                    soundIcon.classList.add('fa-volume-mute');
+                }
+                soundToggle.style.borderColor = 'var(--glass-border)';
+            }
+        });
+    }
 
     // --- Scroll Reveal Animations ---
     const revealElements = document.querySelectorAll('.reveal, .reveal-delay, .reveal-delay-2, .reveal-delay-3');

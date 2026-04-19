@@ -1,7 +1,4 @@
-/* 
-    ASTRA – Tech Student Team
-    Theme: Avengers / Futuristic / Neon
-*/
+@import url('https://fonts.cdnfonts.com/css/avengeance');
 
 :root {
     --primary-red: #cccccc;
@@ -14,8 +11,9 @@
     --glass-border: rgba(255, 255, 255, 0.25);
     --text-main: #ffffff;
     --text-dim: #999999;
-    --font-header: 'boldum-Bold-Exfont13e8', sans-serif;
+    --font-header: 'Avengeance', sans-serif;
     --font-body: 'Poppins', sans-serif;
+    --font-avengeance: 'Avengeance', sans-serif;
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -74,6 +72,9 @@ body {
     background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block; /* Essential for padding to work on spans */
+    padding-right: 0.25em; /* Increased safety margin for leaning characters */
+    margin-right: -0.25em; /* Offset the padding to maintain visual centering */
 }
 
 .section {
@@ -232,14 +233,15 @@ body {
     text-decoration: none;
     color: #ffffff; /* Brightened to pure white */
     font-family: var(--font-header);
-    font-size: 1.1rem; /* Slightly larger for easier reading */
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 0 2px 5px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8); /* Aggressive black shadow to separate text from background video */
+    font-size: 0.85rem; 
+    font-weight: normal;
+    letter-spacing: 1.5px;
+    margin-right: -1.5px; /* Ensures last character is fully visible */
+    text-shadow: 0 2px 5px rgba(0,0,0,1), 0 0 15px rgba(0,0,0,0.8); 
     transition: var(--transition-smooth);
     text-transform: uppercase;
     position: relative;
-    padding-bottom: 5px;
+    padding: 0 5px; /* Minor safety buffer */
 }
 
 /* Glowing Underline Animation */
@@ -430,8 +432,11 @@ body {
     font-family: var(--font-header);
     font-size: 2.5rem;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    word-spacing: 12px; /* Force space between words for Avengeance font */
+    margin-right: -2px; /* Balancing letter-spacing */
     margin-bottom: 20px;
+    overflow: visible;
 }
 
 .divider {
@@ -875,5 +880,251 @@ body {
     .btn-glow {
         padding: 12px 30px;
         font-size: 0.9rem;
+    }
+}
+
+/* --- Team Page --- */
+.team-section {
+    padding: 120px 0;
+}
+
+.main-team-title {
+    font-size: 4rem;
+    letter-spacing: 12px;
+    word-spacing: 25px; /* Significant gap between THE, TEAM, and ASTRA */
+    text-align: center;
+    font-weight: 800;
+    margin-top: 40px;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    overflow: visible;
+    white-space: nowrap; /* Keep it on one line as a flagship title */
+    display: block;
+    width: 100%;
+    margin-right: -12px; /* Crucial: offsets the letter-spacing to truly center the word */
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.leader-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.member-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: 0.8s;
+    pointer-events: none;
+}
+
+.member-card:hover::before {
+    left: 100%;
+    top: 100%;
+}
+
+.member-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.member-card i.fa-user-circle {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    transition: 0.4s;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.member-card:hover i.fa-user-circle {
+    transform: scale(1.1);
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.member-card h3 {
+    font-family: var(--font-header);
+    font-size: 2rem;
+    margin-bottom: 8px;
+    letter-spacing: 3px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0,0,0,1);
+}
+
+.member-card .role {
+    color: var(--primary-glow);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.member-links {
+    display: flex;
+    gap: 25px;
+    margin-top: auto;
+}
+
+.member-links a {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.member-links a:hover {
+    color: #fff;
+    transform: translateY(-3px) scale(1.2);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* --- Lead & Co-Lead Elite Styles --- */
+.lead-card {
+    min-width: 380px;
+    padding: 70px 40px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: float 4s ease-in-out infinite;
+}
+
+.lead-card i.fa-crown {
+    font-size: 5rem;
+    color: #fff;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
+}
+
+.lead-card h3 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.lead-card .role {
+    color: #000;
+    background: #fff;
+    padding: 6px 20px;
+    border-radius: 4px;
+    font-weight: 800;
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+}
+
+.co-lead-card {
+    min-width: 340px;
+    padding: 50px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.03) 100%);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+.co-lead-card i.fa-shield-alt {
+    font-size: 4rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+}
+
+.co-lead-card h3 {
+    font-size: 2.2rem;
+}
+
+.co-lead-card .role {
+    color: #000;
+    background: rgba(255,255,255,0.8);
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Mobile Overrides for Team Cards */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .member-card {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    .member-card i.fa-user-circle {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    .member-card h3 {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+
+    .member-card .role {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+    }
+
+    .member-links {
+        gap: 12px;
+    }
+
+    .member-links a {
+        font-size: 1rem;
+    }
+
+    .leader-grid {
+        gap: 15px;
+    }
+
+    .leader-card {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .team-category h2 {
+        font-size: 2rem;
     }
 }
