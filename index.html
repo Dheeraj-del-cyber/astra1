@@ -173,6 +173,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="section">
+
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Establish <span class="text-gradient">Contact</span></h2>
@@ -196,8 +197,13 @@
 
                 <div class="tech-lines"></div>
 
-                <div class="footer-minimal reveal-delay">
-                    <p>&copy; 2024 ASTRA Team. All systems operational.</p>
+                <div class="footer-minimal reveal-delay" style="position: relative; padding: 40px 0; display: flex; flex-direction: column; align-items: center; z-index: 1;">
+                    <!-- Scaled Spider Centered behind Footer -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; pointer-events: none; opacity: 0.1; display: flex; justify-content: center; align-items: center; width: 100vw; overflow: hidden;">
+                        <img src="logo/spider-transparent.png" alt="" style="width: 100vw; max-width: none; height: auto; object-fit: cover; filter: drop-shadow(0 0 10px rgba(255, 17, 0, 0.2));">
+                    </div>
+                
+                    <p style="margin-top: 0;">&copy; 2024 ASTRA Team. All systems operational.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
