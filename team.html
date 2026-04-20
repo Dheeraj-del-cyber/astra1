@@ -231,10 +231,10 @@
 
     </div> <!-- End Page Wrapper -->
 
-    <!-- Background Music (Using <video> for better .mp4 fallback on mobile) -->
-    <video id="bg-music" loop playsinline preload="auto" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; z-index: -1;">
-        <source src="song/WhatsApp Video 2026-04-20 at 10.50.30 PM.mp4" type="video/mp4">
-    </video>
+    <!-- Background Music -->
+    <audio id="bg-music" loop preload="auto" style="position: absolute; width: 1px; height: 1px; visibility: hidden; pointer-events: none; z-index: -1;">
+        <source src="song/WhatsApp%20Video%202026-04-20%20at%2010.50.30%20PM.mp4" type="audio/mp4">
+    </audio>
 
     <!-- Liquid Metal Ripple Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -332,26 +332,34 @@
             const silent = new Audio("data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA== ");
             silent.play().catch(() => {});
 
-            // 2. Dual Play - Explicitly start both to satisfy Instagram/Mobile policies
+            // 2. Dual Play - Explicitly start both
             if (teamInitVideo) {
                 teamInitVideo.muted = true;
-                teamInitVideo.play().catch(e => console.log("Init video fail:", e));
+                teamInitVideo.play().catch(e => console.log("Video fail:", e));
             }
 
             if (bgMusic) {
-                bgMusic.muted = false; // Important: Unmute for audio
+                // Triple-check audio state for mobile
+                bgMusic.muted = false;
                 bgMusic.volume = 1.0;
                 
-                // Force a reload to ensure fresh playback state if needed
-                if (bgMusic.readyState === 0) bgMusic.load(); 
+                // Re-prime the source if needed
+                if (bgMusic.readyState === 0) {
+                    bgMusic.load();
+                }
                 
-                bgMusic.play().then(() => {
-                    isMusicPlaying = true;
-                    updateSoundIcon();
-                    console.log("Initialization music started successfully.");
-                }).catch(e => {
-                    console.log("Music fail:", e);
-                });
+                const playPromise = bgMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isMusicPlaying = true;
+                        updateSoundIcon();
+                        console.log("Music started.");
+                    }).catch(e => {
+                        console.log("Music fail:", e);
+                        // Emergency fallback: retry on next frame
+                        setTimeout(() => bgMusic.play(), 100);
+                    });
+                }
             }
             
             // Cleanup
