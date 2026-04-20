@@ -295,8 +295,14 @@
                 teamWrapper.style.filter = 'blur(0) brightness(1) contrast(100%)';
             }, 100);
 
-            // Stop initialization video
-            teamInitVideo.pause();
+            // STOP AND KILL INITIALIZATION VIDEO SOUND
+            if (teamInitVideo) {
+                teamInitVideo.pause();
+                teamInitVideo.muted = true; // Force mute
+                teamInitVideo.currentTime = 0; // Reset
+                teamInitVideo.src = ""; // Clear src to be absolutely sure
+                teamInitVideo.load();
+            }
             
             // Play background music
             if (bgMusic) {
@@ -307,9 +313,12 @@
             
             setTimeout(() => {
                 teamOverlay.style.display = 'none';
-                $('body').ripples('updateSize');
+                if (typeof $ !== 'undefined' && $('body').ripples) {
+                    $('body').ripples('updateSize');
+                }
             }, 1000);
         }
+
 
         // Invisible Audio Unlocker Logic
         const audioUnlocker = document.getElementById('audio-unlocker');

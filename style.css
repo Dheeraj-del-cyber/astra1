@@ -1482,7 +1482,7 @@ body {
     .team-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
     .member-card { padding: 20px 15px; border-radius: 12px; animation: none !important; }
     .leader-card { width: 100%; max-width: 260px; }
-    .main-team-title { font-size: 0.9rem; letter-spacing: 3px; }
+    .main-team-title { font-size: 2.8rem; letter-spacing: 2px; }
     .member-photo-wrapper { width: 90px !important; height: 90px !important; }
     .lead-card .member-photo-wrapper { width: 120px !important; height: 120px !important; }
     .avengers-ring { display: none !important; } /* High performance cost */
