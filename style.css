@@ -383,7 +383,9 @@ body {
 
 .btn-glow {
     display: inline-block;
-    padding: 15px 40px;
+    width: 300px;
+    padding: 15px 0;
+    text-align: center;
     background: transparent;
     border: 1px solid var(--primary-blue);
     color: white;
@@ -420,7 +422,9 @@ body {
 
 .btn-glass {
     display: inline-block;
-    padding: 16px 45px;
+    width: 300px;
+    padding: 15px 0;
+    text-align: center;
     background: rgba(255, 255, 255, 0.01); /* Almost invisible background */
     backdrop-filter: blur(8px) saturate(150%); /* Clearer, less milky blur */
     -webkit-backdrop-filter: blur(8px) saturate(150%);
